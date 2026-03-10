@@ -60,6 +60,14 @@ Frontend (`Front-End/.env.example`):
 
 - `VITE_API_URL=http://localhost:8000`
 
+Conexao externa (DBeaver/clients no host):
+
+- Host: `127.0.0.1`
+- Porta: `5433`
+- Database: `taskflow`
+- Usuario: `postgres`
+- Senha: `postgres`
+
 ## Endpoints principais
 
 - `POST /auth/register`

@@ -1,4 +1,4 @@
-from sqlalchemy import func
+from sqlalchemy import func, select
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
@@ -13,7 +13,7 @@ router = APIRouter(prefix="/dashboard", tags=["Dashboard"])
 
 @router.get("/metrics")
 def get_metrics(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    project_ids = db.query(Project.id).filter(Project.owner_id == current_user.id).subquery()
+    project_ids = select(Project.id).where(Project.owner_id == current_user.id)
 
     total_projects = db.query(func.count(Project.id)).filter(Project.owner_id == current_user.id).scalar() or 0
     total_tasks = db.query(func.count(Task.id)).filter(Task.project_id.in_(project_ids)).scalar() or 0
