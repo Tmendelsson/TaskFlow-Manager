@@ -1,37 +1,110 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap");
 
 :root {
-  color: #11120d;
-  background: #fffdf3;
+  color: #e2e8f0;
+  background: #0d0d1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #0d0d1a;
 }
 
 body {
-  @apply font-body text-ink min-h-screen;
+  font-family: "Manrope", "Segoe UI", sans-serif;
   background-image:
-    radial-gradient(circle at 15% 20%, rgba(213, 137, 54, 0.12), transparent 30%),
-    radial-gradient(circle at 85% 10%, rgba(42, 92, 130, 0.15), transparent 35%),
-    linear-gradient(145deg, #fffdf3 0%, #f6f0d7 100%);
+    radial-gradient(circle at 15% 12%, rgba(99, 102, 241, 0.16), transparent 35%),
+    radial-gradient(circle at 88% 82%, rgba(244, 63, 94, 0.1), transparent 32%),
+    linear-gradient(165deg, #0a0a13 0%, #0d0d1a 50%, #111124 100%);
+  color: #e2e8f0;
 }
 
-.panel {
-  @apply rounded-2xl bg-white/85 backdrop-blur-sm border border-ink/10 shadow-card;
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
-.card-enter {
-  animation: fadeUp 260ms ease-out;
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+.auth-card {
+  width: min(96vw, 420px);
+  background: rgba(18, 18, 35, 0.9);
+  border: 1px solid #2a2a40;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+.auth-card h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.1;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.auth-card p {
+  margin: 8px 0 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.auth-card form {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-card input {
+  background: #0f0f1e;
+  border: 1px solid #2a2a40;
+  border-radius: 10px;
+  padding: 11px 12px;
+  color: #e2e8f0;
+}
+
+.auth-card button[type="submit"] {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  border: 0;
+  color: #fff;
+  border-radius: 10px;
+  padding: 11px 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-link {
+  margin-top: 12px;
+  border: 0;
+  background: transparent;
+  color: #a5b4fc;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.auth-error {
+  margin-top: 8px;
+  color: #fca5a5;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .auth-shell {
+    padding: 16px;
   }
 }
