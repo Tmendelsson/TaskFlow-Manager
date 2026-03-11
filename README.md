@@ -87,6 +87,7 @@ Conexao externa (DBeaver/clients no host):
 - Este projeto esta pronto para evoluir com refresh token, permissoes por equipe e websocket para notificacoes em tempo real.
 ## UX DESIGN ANTERIOR
 <img width="1902" height="1008" alt="Captura de tela 2026-03-10 164405" src="https://github.com/user-attachments/assets/05fa8c06-880a-48fd-bc6a-cddc89e48ee2" />
-## NOVA REFATORAÇÃO DE UX DESIGN
+
+## NOVA REFATORACAO DE UX DESIGN
 <img width="1896" height="972" alt="image" src="https://github.com/user-attachments/assets/e2097812-4ee9-4033-90d0-4393a60d90b3" />
 
