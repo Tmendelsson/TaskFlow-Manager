@@ -1,0 +1,74 @@
+.dashboard {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.headline { display: flex; align-items: flex-start; gap: 12px; }
+.headlineDot { width: 12px; height: 12px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.headlineTitle { font-weight: 800; font-size: 22px; color: var(--text-primary); letter-spacing: -.03em; }
+.headlineDesc  { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.statCard {
+  background: var(--bg-card);
+  border: 1px solid;
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  position: relative;
+  overflow: hidden;
+}
+.statIcon { position: absolute; right: -6px; top: -4px; font-size: 44px; pointer-events: none; }
+.statLabel { font-size: 10px; color: var(--text-ghost); font-weight: 700; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+.statValue { font-size: 28px; font-weight: 800; font-family: 'JetBrains Mono', monospace; line-height: 1.1; }
+
+.gridTwo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 18px;
+}
+.cardHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.cardTitle  { font-size: 13px; font-weight: 700; color: var(--text-secondary); }
+.cardBig    { font-size: 28px; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+
+.bigBar     { background: var(--bg-hover); border-radius: 20px; height: 8px; margin-bottom: 14px; overflow: hidden; }
+.bigBarFill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--purple)); border-radius: 20px; transition: width .6s ease; }
+
+.progressList { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.progressRow  { }
+.progressTop  { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.progressLabel { font-size: 12px; color: var(--text-secondary); }
+.progressCount { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+.progressTrack { background: var(--bg-hover); border-radius: 20px; height: 5px; overflow: hidden; }
+.progressFill  { height: 100%; border-radius: 20px; transition: width .5s ease; }
+.progressPct   { font-size: 10px; color: var(--text-ghost); text-align: right; margin-top: 2px; }
+
+.priorityCards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
+.prioCard  { background: var(--bg-input); border: 1px solid; border-radius: var(--radius-md); padding: 10px 8px; text-align: center; }
+.prioDot   { width: 8px; height: 8px; border-radius: 50%; margin: 0 auto 6px; }
+.prioLabel { font-size: 10px; color: var(--text-ghost); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.prioCount { font-size: 22px; font-weight: 800; font-family: 'JetBrains Mono', monospace; line-height: 1.2; }
+.prioSub   { font-size: 10px; color: var(--text-ghost); }
+
+.activityList { display: flex; flex-direction: column; }
+.activityItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+.activityItem:last-child { border-bottom: none; }
+.activityIcon  { font-size: 14px; flex-shrink: 0; }
+.activityTitle { flex: 1; font-size: 13px; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.activityTag   { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+.noActivity    { font-size: 12px; color: var(--text-ghost); text-align: center; padding: 20px; font-style: italic; }
