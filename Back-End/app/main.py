@@ -9,6 +9,7 @@ from app.api.dashboard import router as dashboard_router
 from app.api.notifications import router as notifications_router
 from app.api.projects import router as project_router
 from app.api.tasks import router as task_router
+from app.api.tasks_compat import router as tasks_compat_router
 from app.core.config import settings
 from app.db import Base, engine
 from app import models  # noqa: F401
@@ -40,5 +41,6 @@ def healthcheck():
 app.include_router(auth_router)
 app.include_router(project_router)
 app.include_router(task_router)
+app.include_router(tasks_compat_router)
 app.include_router(dashboard_router)
 app.include_router(notifications_router)
