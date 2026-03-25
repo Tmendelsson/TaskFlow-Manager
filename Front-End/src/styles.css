@@ -103,6 +103,12 @@ textarea {
   font-size: 12px;
 }
 
+.auth-success {
+  margin-top: 8px;
+  color: #86efac;
+  font-size: 12px;
+}
+
 @media (max-width: 900px) {
   .auth-shell {
     padding: 16px;

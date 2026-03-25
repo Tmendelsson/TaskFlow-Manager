@@ -229,7 +229,7 @@ function StatCard({ label, value, accent }) {
 }
 
 export default function App() {
-  const [token, setToken] = useState(localStorage.getItem("taskflow_token") || "");
+  const [token, setToken] = useState("");
   const [authMode, setAuthMode] = useState("login");
   const [authForm, setAuthForm] = useState({ name: "", email: "", password: "" });
 
@@ -246,7 +246,12 @@ export default function App() {
   const [taskForm, setTaskForm] = useState({ title: "", description: "", status: "TODO", priority: "medium", tag: "task" });
 
   const [error, setError] = useState("");
+  const [authNotice, setAuthNotice] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    localStorage.removeItem("taskflow_token");
+  }, []);
 
   useEffect(() => {
     setAuthToken(token);
@@ -308,16 +313,21 @@ export default function App() {
   async function submitAuth(event) {
     event.preventDefault();
     setError("");
+    setAuthNotice("");
     setLoading(true);
     try {
       if (authMode === "register") {
         await api.post("/auth/register", authForm);
+        setAuthMode("login");
+        setAuthForm((prev) => ({ ...prev, name: "", password: "" }));
+        setAuthNotice("Conta criada com sucesso. Faça login para acessar o dashboard.");
+        return;
       }
+
       const { data } = await api.post("/auth/login", {
         email: authForm.email,
         password: authForm.password,
       });
-      localStorage.setItem("taskflow_token", data.access_token);
       setToken(data.access_token);
     } catch (err) {
       setError(err.response?.data?.detail || "Falha de autenticacao.");
@@ -454,9 +464,18 @@ export default function App() {
               {loading ? "Carregando..." : authMode === "register" ? "Criar conta" : "Entrar"}
             </button>
           </form>
-          <button className="auth-link" type="button" onClick={() => setAuthMode((prev) => (prev === "register" ? "login" : "register"))}>
+          <button
+            className="auth-link"
+            type="button"
+            onClick={() => {
+              setError("");
+              setAuthNotice("");
+              setAuthMode((prev) => (prev === "register" ? "login" : "register"));
+            }}
+          >
             {authMode === "register" ? "Ja tenho conta" : "Criar conta nova"}
           </button>
+          {authNotice && <div className="auth-success">{authNotice}</div>}
           {error && <div className="auth-error">{error}</div>}
         </div>
       </div>
